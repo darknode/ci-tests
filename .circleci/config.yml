@@ -14,12 +14,12 @@ jobs:
           #echo $COMMIT_RANGE
           if [ -z "${CIRCLE_COMPARE_URL}" ]
           then
-            COMMIT_RANGE="${CIRCLE_SHA1}..${CIRCLE_SHA1}"
+            COMMIT_RANGE="${CIRCLE_SHA1}.."
           else
             COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
           fi
 
-          git log --name-only --oneline $COMMIT_RANGE | grep -v "^.\{7\} " | uniq
+          git show --pretty="" --name-only $COMMIT_RANGE
 
 #      - run: sudo npm install -g --quiet gulp-cli
 #      - run: npm i --quiet
