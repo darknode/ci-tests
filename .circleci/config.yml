@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run: |
+          COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
+          echo $COMMIT_RANGE
+
+#      - run: sudo npm install -g --quiet gulp-cli
+#      - run: npm i --quiet
