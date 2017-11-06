@@ -19,7 +19,7 @@ jobs:
             COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
           fi
 
-          echo $COMMIT_RANGE
+          git log --name-only --oneline $COMMIT_RANGE | grep -v "^.\{7\} " | uniq
 
 #      - run: sudo npm install -g --quiet gulp-cli
 #      - run: npm i --quiet
