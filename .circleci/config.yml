@@ -12,8 +12,13 @@ jobs:
       - run: |
           #COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
           #echo $COMMIT_RANGE
-          if [ -z "${CIRCLE_COMPARE_URL}" ] then COMMIT_RANGE="${CIRCLE_SHA1}..${CIRCLE_SHA1}" else COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7) fi
-          
+          if [ -z "${CIRCLE_COMPARE_URL}" ]
+          then
+            COMMIT_RANGE="${CIRCLE_SHA1}..${CIRCLE_SHA1}"
+          else
+            COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
+          fi
+
           echo $COMMIT_RANGE
 
 #      - run: sudo npm install -g --quiet gulp-cli
