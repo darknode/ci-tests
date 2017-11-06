@@ -19,7 +19,7 @@ jobs:
             COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
           fi
 
-          git show --pretty="" --name-only $COMMIT_RANGE
+          git show --pretty="" --name-only $COMMIT_RANGE | uniq
 
 #      - run: sudo npm install -g --quiet gulp-cli
 #      - run: npm i --quiet
