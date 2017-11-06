@@ -10,7 +10,9 @@ jobs:
       - checkout
 
       - run: |
-          COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
+          #COMMIT_RANGE=$(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
+          #echo $COMMIT_RANGE
+          COMMIT_RANGE=[  -z "$CIRCLE_COMPARE_URL" ] && "$CIRCLE_SHA1..$CIRCLE_SHA1" || $(echo "${CIRCLE_COMPARE_URL}" | cut -d/ -f7)
           echo $COMMIT_RANGE
 
 #      - run: sudo npm install -g --quiet gulp-cli
